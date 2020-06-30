@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora VueJS - Com Operação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <form>
+            </br>
+            <div class="form-group">
+                <label for="num1">Primeiro Número</label>
+                <input type="text" id="num1" name="num2" placeholder="Primeiro Número" v-model="num1"/>
+            </div>
+            
+            <div class="form-group">
+                <label for="num2">Segundo Número</label>
+                <input type="text" id="num2" name="num2" placeholder="Segundo Número" v-model="num2"/>
+            </div>
+
+            <button class="btn btn-primary" v-on:click.prevent="somar()">Somar</button>
+            <button class="btn btn-danger" v-on:click.prevent="subtrair()">Subtrair</button>
+            <button class="btn btn-success" v-on:click.prevent="multiplicar()">Multiplicar</button>
+            <button class="btn btn-warning" v-on:click.prevent="dividir()">Dividir</button>
+
+            <ul>
+                <!-- Tem que ser o mesmo que está na linha 31 lista dentro de Methods -->
+                <li v-for="item in lista">{{item}}</li>
+            </ul>
+
+            <!-- <div class="form-group">
+                </br>
+                <label for="resultado">Resultado</label>
+                <input type="text" id="resultado" name="resultado" placeholder="Resultado" v-model="resultado"/>
+            </div>                         -->
+        </form>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num1: null,
+                num2: null,
+                lista: [],
+                resultado: null
+            },
+            methods: {
+                somar: function() {
+                    this.resultado = +this.num1 + +this.num2;
+                    this.lista.push(+this.num1 + " + " + +this.num2 + " = " + this.resultado);
+                    this.num1 = '';
+                    this.num2 = '';
+                    // this.resultado = '';
+                },
+
+                subtrair: function() {
+                    this.resultado = +this.num1 - +this.num2;
+                    this.lista.push(+this.num1 + " - " + +this.num2 + " = " + this.resultado);
+                    this.num1 = '';
+                    this.num2 = '';
+                    // this.resultado = '';
+                },
+
+                multiplicar: function() {
+                    this.resultado = +this.num1 * +this.num2;
+                    this.lista.push(+this.num1 + " * " + +this.num2 + " = " + this.resultado);
+                    this.num1 = '';
+                    this.num2 = '';
+                    // this.resultado = '';
+                },
+
+                dividir: function() {
+                    this.resultado = +this.num1 / +this.num2;
+                    this.lista.push(+this.num1 + " / " + +this.num2 + " = " + this.resultado);
+                    this.num1 = '';
+                    this.num2 = '';
+                    // this.resultado = '';
+                }
+            }
+        })
+    </script>
+
+    <style>
+        body { 
+            background-color: #87CEEB; 
+            background-image: url('fundo_login.png');
+            background-repeat: round;
+            background-attachment: fixed;
+        }
+        label, li{
+            color: white;
+            font-style: normal;
+            
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
